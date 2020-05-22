@@ -1,5 +1,6 @@
-import subprocess
 import pathlib
+import subprocess
+
 
 def run_sketch():
     path = pathlib.Path('sketch')

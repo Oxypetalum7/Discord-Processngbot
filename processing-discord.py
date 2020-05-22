@@ -1,14 +1,15 @@
-import discord
-import sys
-from discord.ext import commands #コマンド関係　
-import text_process
-import run_sketch
-import generate_gif
-import shutil
 import os
+import shutil
+import sys
 
+import discord
+from discord.ext import commands  # コマンド関係
 
-TOKEN = 'NjI1NTczOTYzNTAxNjY2MzE0.XrxStA.hnQIE7TsD16EYuLL5_xlqDoNgow'
+import generate_gif
+import run_sketch
+import text_process
+
+TOKEN = ''
 client = discord.Client()
 
 @client.event

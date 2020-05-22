@@ -1,6 +1,8 @@
 import glob
 import os
+
 from PIL import Image
+
 
 def generate_image():
     os.chdir('sketch')
