@@ -1,14 +1,18 @@
-import discord
-import sys
-from discord.ext import commands #コマンド関係　
-import text_process
-import run_sketch
-import generate_gif
-import shutil
 import os
+import shutil
+import sys
+import configparser
 
+import discord
+from discord.ext import commands  # コマンド関係
 
-TOKEN = 'NjI1NTczOTYzNTAxNjY2MzE0.XrxStA.hnQIE7TsD16EYuLL5_xlqDoNgow'
+import generate_gif
+import run_sketch
+import text_process
+
+config = configparser.ConfigParser()
+config.read('./config.ini')
+TOKEN = config['TOKEN']['token']
 client = discord.Client()
 
 @client.event
@@ -25,10 +29,13 @@ async def on_message(message):
         await message.channel.send(message.author.mention + ' running...')
         code = message.content
         text_process.writecontent(code)
-        run_sketch.run_sketch()
-        file_img = discord.File("sketch/out.gif")
-        await message.channel.send('Here is a code result.', file=file_img)
+        try:
+          run_sketch.run_sketch()
+          generate_gif.generate_image()
+          file_img = discord.File("sketch/out.gif")
+          await message.channel.send('Here is a code result.', file=file_img)
+        except:
+          await message.channel.send('GIF generation Filed')
 
 
-#bot.run(TOKEN) #最後の行に記述
 client.run(TOKEN)

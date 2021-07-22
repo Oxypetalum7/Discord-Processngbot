@@ -9,3 +9,4 @@ def writecontent(msg):
     f = open('sketch/sketch.pde','w',encoding="utf_8")
     f.write('\n'.join(lines))
     f.close()
+    print('done')
