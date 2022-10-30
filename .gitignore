@@ -1,3 +1,4 @@
-/sketch.pde
-/out.pde
+/sketch
 /config.ini
+.vscode
+__pycache__
